@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Dashboard ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #fff;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      background: rgba(255, 0, 76, 0.7);
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px) scale(1.03);
+    }
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+    .quote {
+      font-style: italic;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      background: #ff4d6d;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #ff1744;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      background: rgba(255, 0, 76, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    ❤️ Love Dashboard ❤️
+  </header>
+
+  <div class="dashboard">
+    <!-- Love Quotes -->
+    <div class="card">
+      <h2>💌 Love Quotes</h2>
+      <p id="quote" class="quote">Click below to see a love quote</p>
+      <button onclick="newQuote()">Show Quote</button>
+    </div>
+
+    <!-- Love Counter -->
+    <div class="card">
+      <h2>💖 Love Counter</h2>
+      <p>You’ve expressed love <span id="loveCount">0</span> times 💕</p>
+      <button onclick="increaseLove()">Send Love</button>
+    </div>
+
+    <!-- Love Message -->
+    <div class="card">
+      <h2>💌 Send a Love Note</h2>
+      <input type="text" id="loveNote" placeholder="Type your message..." style="padding:8px;border-radius:10px;border:none;width:80%">
+      <button onclick="sendNote()">Send</button>
+      <p id="noteDisplay" style="margin-top:10px;font-size:14px;color:#ffe4ec;"></p>
+    </div>
+  </div>
+
+  <footer>
+    Made with ❤️ by You
+  </footer>
+
+  <script>
+    const quotes = [
+      "Love is not about how many days, months, or years you’ve been together. Love is about how much you love each other every single day.",
+      "In all the world, there is no heart for me like yours.",
+      "You are my today and all of my tomorrows.",
+      "Love recognizes no barriers. It jumps hurdles, leaps fences, and arrives at its destination full of hope."
+    ];
+
+    function newQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quote").innerText = quotes[randomIndex];
+    }
+
+    let count = 0;
+    function increaseLove() {
+      count++;
+      document.getElementById("loveCount").innerText = count;
+    }
+
+    function sendNote() {
+      let note = document.getElementById("loveNote").value;
+      if(note.trim() === "") {
+        alert("Please write something sweet 💕");
+        return;
+      }
+      document.getElementById("noteDisplay").innerText = "💌 " + note;
+      document.getElementById("loveNote").value = "";
+    }
+  </script>
+</body>
+</html>
